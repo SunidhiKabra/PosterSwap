@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Item-Poster Swap</title>
+    <% include partials/scripts.ejs %>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <% include partials/signOut.ejs %>
+    <% console.log("inside view, item = " + JSON.stringify(item)); %>
+    <% console.log(typeof item)%>
+    <% console.log(typeof item._id)%>
+    <% console.log(typeof item.itemName)%>
+    <% console.log(typeof item.itemStatus)%>
+    <% console.log(typeof item.itemCategory)%>
+    <% console.log(typeof item.itemDescription)%>
+    <% console.log(typeof item.itemImageUrl)%>
+    <% console.log("Values: ");%>
+
+     <%
+     console.log(isNaN(item._id));
+     console.log(isNaN(item.itemName));
+     console.log(isNaN(item.itemStatus));
+     console.log(isNaN(item.itemCategory));
+     console.log(isNaN(item.itemDescription));
+     console.log(isNaN(item.itemImageUrl));
+     %>
+  </body>
+</html>

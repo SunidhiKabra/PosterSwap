@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Home- Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <% include partials/signOut.ejs %>
+
+		<% console.log("userItems = " + userItems); %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/myPosters">My Posters</a>
+      </h6>
+      <% if(userItems !== null){%>
+      <section>
+				<div class="table-responsive">
+  				<table class="table table-hover">
+    				<thead>
+      				<tr>
+        				<th>Poster</th>
+        				<th>Category</th>
+        				<th>Status</th>
+        				<th>Update</th>
+        				<th>Delete</th>
+      				</tr>
+    				</thead>
+    				<tbody>
+		         <% for(var i=0; i< userItems.length; i++){ %>
+      				<tr>
+        				<td>
+        					<a href="/categories/item/<%= userItems[i]._id %>"><%= userItems[i].itemName %></a>
+        				</td>
+        				<td>
+        					<a><%= userItems[i].itemCategory %></a>
+        				</td>
+        				<td>
+			           <a><%= userItems[i].itemStatus %></a>
+        				</td>
+        				<td>
+        					<a href="/updateItem/<%= userItems[i]._id %>" class="btn btn-primary btn-xs" role="button">Update</a>
+        				</td>
+        				<td>
+        					<a href="/deleteItem/<%= userItems[i]._id %>" class="btn btn-primary btn-xs" role="button">Delete</a>
+        				</td>
+
+      				</tr>
+					<% } %>
+    				</tbody>
+
+  				</table>
+  			</div>
+	    </section>
+      <% } %>
+      <button type="button" class="btn btn-primary btn-lg marginTop30 signUpBtn">
+        <a href="/addPoster">Add Poster</a>
+      </button>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

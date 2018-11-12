@@ -1,0 +1,22 @@
+{
+  "name": "posterswap1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sunidhi",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "http-errors": "^1.7.1",
+    "mongoose": "^5.3.8",
+    "mongoose-auto-increment": "^5.0.1",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.5",
+    "npm": "^6.4.1"
+  }
+}

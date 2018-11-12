@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Sign Up- Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <main>
+  		<h6><a href="/signUp">Sign Up</a></h6>
+  		<div>
+        <div class="container">
+          <div class="container3">
+            <form action="/signUp" method="post">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userFirstName">First Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userFirstName" placeholder="Enter first name" name="userFirstName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userLastName">Last Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userLastName" placeholder="Enter last name" name="userLastName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userEmail">Email:</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="userEmail" placeholder="Enter email" name="userEmail" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userPassword">Password:</label>
+                <div class="col-sm-10">
+                  <input type="password" class="form-control" id="userPassword" placeholder="Enter password" name="userPassword" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userAddress1">Address 1:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userAddress1" placeholder="Enter address1" name="userAddress1">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userAddress2">Address 2:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userAddress2" placeholder="Enter address2" name="userAddress2">
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userCity">City:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userCity" placeholder="Enter city" name="userCity">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userState">State:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userState" placeholder="Enter state" name="userState">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="userCountry">Country:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="userCountry" placeholder="Enter country" name="userCountry">
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-default btn1">Submit</button>
+            </form>
+          </div>
+        </div>
+  		</div>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

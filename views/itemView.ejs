@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Item - Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+
+    <% if(user !== null){%>
+      <% include partials/signOut.ejs %>
+    <% } %>
+
+    <% console.log("inside view, item =" + item); %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/categories">Categories</a> >
+        <a href="/categories/item/<%= item._id%>">Poster</a>
+        <a href="/categories" class="btn btn-primary btn-sm margin5 pull-right" role="button">Back</a>
+      </h6>
+      <section>
+				<div class="itemDetail">
+          <img class="itemPicture" src="<%= item.itemImageUrl %>">
+					<h3 class="itemName"><%= item.itemName %></h3>
+          <% if(item.itemStatus == 'available'){ %>
+						<a href="/swapIt/<%= item._id %>" class="btn btn-primary btn-md margin5" role="button">
+							<span class="glyphicon glyphicon-transfer"></span>
+								Swap it
+						</a>
+						<br>
+					<% } %>
+					<a href="/rateIt/<%= item._id %>" class="btn btn-primary btn-md margin5" role="button">
+						<span class="glyphicon glyphicon-star"></span>
+							Rate it
+					</a>
+				</div>
+			</section>
+			<br>
+			<p class="justified"><%= item.itemDescription %></p>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

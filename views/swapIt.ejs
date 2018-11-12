@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Swap Item - Poster Swap</title>
+    <script>
+        var itemCode = 0;
+        // var itemForSwapId = itemForSwap._id;
+        // console.log('itemForSwapId = ' + itemForSwapId);
+        function confirmFunction() {
+            location.href = '/offerItem?selectedItemCode='+itemCode+'&itemForSwapId=<%= itemForSwap._id %>';
+        }
+
+        function radioButtonSelected(radioButtonValue) {
+            itemCode = radioButtonValue;
+        }
+    </script>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+
+    <% console.log("inside swapIt view, userItems = " + userItems); %>
+    <% console.log("inside swapIt view, itemForSwap = " + itemForSwap); %>
+    <% if(user !== undefined){%>
+      <% include partials/signOut.ejs %>
+    <% } %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/categories">Categories</a> >
+        <a href="/categories/item/<%= itemForSwap._id %>">Poster</a> >
+        <a>Swap Item</a>
+      </h6>
+      <section>
+				<div class="itemDetail">
+          <h3 class="swapItLabel">Swap this poster</h3>
+    					<h3 class="itemName"><%= itemForSwap.itemName %></h3>
+                        <h3>Select a poster from your available swaps</h3>
+                      <div class="container-fluid">
+                        <div class="row">
+                          <div class="col-md-6 col-md-offset-1">
+                            <table class="table table-hover table-bordered">
+                              <tbody>
+                              <% for(var i = 0; i < userItems.length; i++){ %>
+                                  <% if(userItems[i].itemStatus == 'available'){ %>
+                                        <tr>
+                                          <td>
+                                            <div class="radio centerAlignActual">
+                                              <label>
+                                                <input type="radio"  name = "optradio" value="<%= userItems[i]._id %>" onclick="radioButtonSelected(this.value)"><%= userItems[i].itemName %>
+                                              </label>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                  <% }%>
+                                <% } %>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+    				</div>
+            <a onclick="confirmFunction()" class="btn btn-primary btn-lg margin5 pull-right centerAlignActual" type="button">
+                Confirm Swap
+            </a>
+    			</section>
+
+     <% include partials/footer.ejs %>
+  </body>
+</html>

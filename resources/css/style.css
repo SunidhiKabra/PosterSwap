@@ -1,0 +1,215 @@
+.jumbotron{
+	color: white;
+	height: 150px;
+  margin-bottom: 0px !important;
+  margin-top: -40px;
+}
+
+.backgroundImage{
+	background: #ffffff url("../../resources/images/headerBG.jpg") no-repeat ;
+	width: 100%;
+	background-size: cover;
+}
+
+.marginTop0{
+	 margin-top: 0px !important;
+ }
+
+ .fontSize20{
+     font-size:20px;
+ }
+
+.centerAlign{
+	 	color: white;
+}
+
+.centerAlignActual{
+		text-align: center !important;
+}
+
+.textBold{
+	font-weight: bold;
+}
+
+.navbar{
+  margin-bottom: 0px !important;
+  border-radius:0px !important;
+  border-color:#222 !important;
+}
+
+.nav-justified {
+   font-size:25px;
+}
+
+.nav-stacked{
+  align-content: center;
+}
+
+.ul1 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    background-color:#222;
+    border-color:#222;
+    color:#9d9d9d;
+}
+
+.a1 {
+    display: block;
+    color: #9d9d9d;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 25px !important;
+    margin-left: 10%;
+}
+
+.a1.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.a1:hover:not(.active) {
+    background-color: #555;
+    color: white;
+}
+
+.pageFooter{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    margin-left: 7%;
+}
+
+.textStyle{
+	 	font-family: comic-sans;
+}
+
+.welcomeMessage{
+	margin: 20px;
+	font-size: 35px;
+}
+
+.textBold{
+	display: inline;
+	font-weight: bold;
+}
+
+.signOut{
+	position: absolute;
+	top:50px; right:35px;
+	background-color: #222 !important;
+	color: white !important;
+	border-color:#222 !important;
+}
+
+main header{
+	font-size: 20px;
+	font-family: comic-sans;
+	font-style: italic;
+}
+
+main{
+	float: right;
+	width: 78%;
+}
+
+.marginTop30{
+	margin-top: 30px;
+}
+
+.size50 {
+    font-size: 50px;
+}
+
+.container-fluid {
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+.about{
+	margin: 20px;
+	font-size: 20px;
+	font-family: comic-sans;
+}
+
+.justified{
+	text-align: justify;
+  text-justify: inter-word;
+}
+
+.container1{
+	width: 40% !important;
+	float: left;
+}
+
+.container2{
+	width: 35% !important;
+	float: left;
+	margin-left: 5% !important;
+}
+
+.container3{
+	width: 70% !important;
+	float: left;
+	margin-bottom: 2%;
+}
+
+.btn1{
+	background-color: #222 !important;
+	color: white !important;
+}
+
+.signUpBtn{
+	margin-top: 10%;
+	background-color: #222 !important;
+	color: white !important;
+}
+
+.margin5{
+	margin: 5px;
+}
+
+.itemPicture{
+	width: 20%;
+	height: auto;
+	padding-left: 5px;
+	margin-right: 5px;
+	float: left;
+}
+
+.itemName{
+	/* margin-left:10px; */
+	float: relative;
+	font-weight: bold;
+}
+
+.space20{
+	margin:20px;
+}
+
+.categoriesAvailable{
+	font-size: 20px;
+	margin: 20px;
+}
+
+.bold{
+	font-weight: bold;
+}
+
+.itemPicture{
+	width: 20%;
+	height: auto;
+	padding-left: 5px;
+	margin-right: 5px;
+	float: left;
+}

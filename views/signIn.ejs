@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Sign In- Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <main>
+  		<h6><a href="/signIn">Sign In</a></h6>
+  		<div>
+        <% if((data !== null) || (data.message !== null) || (typeof data !== 'undefined')){ %>
+            <% if(data.isSignedIn === true){%>
+              <i class="textBold"><%= data.message %></i>
+              <% include partials/signOut.ejs %>
+            <% } else { %>
+              <div class="container">
+                <div class="container1">
+                  <h2 class="textBold">Registered Already? Sign in: </h2>
+                  <form class="marginTop30"action="/signIn" method="post">
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                      <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                    </div>
+                    <br>
+                    <div class="input-group">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                      <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-default btn1">Submit</button>
+                  </form>
+                </div>
+                <div class="container2 text-center">
+                  <h2 class="textBold">New User? Sign Up:</h2>
+                    <br>
+                    <button type="button" class="btn btn-primary btn-lg marginTop30 signUpBtn">
+                      <a href="/signUp">Sign Up
+                      </a>
+                    </button>
+                </div>
+              </div>
+            <% } %>
+        <% } %>
+  		</div>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

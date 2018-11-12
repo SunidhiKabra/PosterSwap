@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Home- Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <% include partials/signOut.ejs %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/myPosters">My Posters</a> >
+        <a href="/addPoster">Add Poster</a>
+      </h6>
+      <div>
+        <div class="container">
+          <div class="container3">
+            <form action="/addPoster" method="post">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="itemName">Name:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="itemName" placeholder="Enter name" name="itemName" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="itemCategory">Category:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="itemCategory" placeholder="Enter category" name="itemCategory" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="itemDescription">Description:</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="itemDescription" placeholder="Enter description" name="itemDescription">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="itemImageUrl">Image Url: </label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="itemImageUrl" placeholder="Enter image url" name="itemImageUrl">
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-default btn1">Submit</button>
+            </form>
+          </div>
+        </div>
+  		</div>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

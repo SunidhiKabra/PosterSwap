@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ./partials/scripts.ejs %>
+	<title>Contact- Poster Swap</title>
+</head>
+<body>
+
+	<% include ./partials/header.ejs %>
+	<% include ./partials/user-navigation.ejs %>
+	<div class="container-fluid">
+	<main>
+		<h6><a href="contact">Contact</a></h6>
+    <div class="container">
+	     <div class="row text-center marginTop30">
+		       <div class="col-sm-3 col-xs-6">
+             <h1><span class="glyphicon glyphicon-earphone size50"></span></h1>
+             <h3>Phone</h3>
+             <p>+1-980-349-0298</p><br>
+           </div>
+           <div class="col-sm-3 col-xs-6">
+             <h1><span class="glyphicon glyphicon-home size50"></span></h1>
+             <h3>Location</h3>
+             <p>Charlotte, NC</p><br>
+           </div>
+           <div class="col-sm-3 col-xs-6">
+             <h1><span class="glyphicon glyphicon-envelope size50"></span></h1>
+             <h3>E-mail</h3>
+             <p>skabra@uncc.edu</p><br>
+           </div>
+	        </div>
+					<br>
+					<% if((data !== null) || (data.message !== null) || (typeof data !== 'undefined')){ %>
+							<i class="textBold"><%= data.message %></i>
+							<% if(data.isSignedIn === true){%>
+							<% include partials/signOut.ejs %>
+					<%}}%>
+        </div>
+	</main>
+	<% include ./partials/site-navigation.ejs %>
+	<% include ./partials/footer.ejs %>
+</div>
+</body>
+</html>

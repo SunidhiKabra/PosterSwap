@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ./partials/scripts.ejs %>
+	<title>About- Poster Swap</title>
+</head>
+<body>
+	<% include ./partials/header.ejs %>
+	<% include ./partials/user-navigation.ejs %>
+	<div class="container-fluid">
+		<main>
+			<h6><a href="about">About</a></h6>
+			<div class="about justified">
+	      We all love to have posters around us, be it our own room, our living room, our kitchen and everywhere. But who likes to see the same poster everyday for days?
+	      <div class="textBold">Poster Swap</div> helps you exchange your posters with others! You can bring in a poster of your favourite car and take a poster of your favourite actor.
+			</div>
+	    <br>
+	    <% if((data !== null) || (data.message !== null) || (typeof data !== 'undefined')){ %>
+	        <i class="textBold"><%= data.message %></i>
+	        <% if(data.isSignedIn === true){%>
+	        <% include partials/signOut.ejs %>
+	    <%}}%>
+		</main>
+	<% include ./partials/site-navigation.ejs %>
+	<% include ./partials/footer.ejs %>
+	</div>
+</body>
+</html>

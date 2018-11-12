@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ./partials/scripts.ejs %>
+	<title>My Posters- Food Swap</title>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<% include ./partials/header.ejs %>
+		<% include ./partials/user-navigation.ejs %>
+		<% if(user !== null){%>
+      <% include partials/signOut.ejs %>
+    <% } %>
+		<main>
+			<h6>
+				<a href="/index">Home</a> >
+				<a href="/categories">Categories</a>
+			</h6>
+			<div class="categoriesAvailable">
+				Categories available:
+				<% for(var i =0; i < category.length; i++) {%>
+					<div class="dropdown">
+						<button class="btn btn-primary dropdown-toggle space20" type="button" data-toggle="dropdown"><%= category[i] %>
+							<span class="caret">
+							</span>
+						</button>
+						<ul class="dropdown-menu">
+							<% for(var j=0; j< items.length; j++) { %>
+								<% if(category[i] === items[j].itemCategory){ %>
+		      				<li><a href="/categories/item/<%= items[j]._id %>"><%= items[j].itemName %></a></li>
+								<% }%>
+							<% }%>
+					</ul>
+				</div>
+			<% } %>
+		</div>
+		</main>
+		<% include ./partials/site-navigation.ejs %>
+		<% include ./partials/footer.ejs %>
+	</div>
+</body>
+</html>

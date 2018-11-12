@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Home- Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <main>
+  		<h6><a href="/index">Home</a></h6>
+  		<header>
+  				Bored of your poster? Had it for a long time now?
+  		</header>
+  		<div class="welcomeMessage">
+  			Welcome to <div class="textBold">Poster Swap</div> where you can exchange your posters with other posters!
+  		</div>
+  		<div>
+              <% if((data !== null) || (data.message !== null) || (typeof data !== 'undefined')){ %>
+                  <i class="textBold"><%= data.message %></i>
+                  <% if(data.isSignedIn === true){%>
+                  <% include partials/signOut.ejs %>
+              <%}}%>
+
+
+  		</div>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

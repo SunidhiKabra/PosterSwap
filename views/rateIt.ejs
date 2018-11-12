@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>Item - Poster Swap</title>
+    <script>
+        var rating = 0;
+        function confirmFunction() {
+            location.href = '/doneRating?itemCode=<%= item._id %>&rating=' + rating;
+        }
+
+        function radioButtonSelected(radioButtonValue) {
+            rating = radioButtonValue;
+        }
+    </script>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+
+    <% if(user !== null){%>
+      <% include partials/signOut.ejs %>
+    <% } %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/categories">Categories</a> >
+        <a href="/categories/item/<%= item._id %>">Poster</a> >
+        <a href="/rateIt/<%= item._id %>">Rate It</a>
+        <a href="/categories/item/<%= item._id %>" class="btn btn-primary btn-sm margin5 pull-right" role="button">Back</a>
+      </h6>
+      <section>
+				<div class="itemDetail">
+					<h3 class="itemName"><%= item.itemName %></h3>
+          <% if(item.itemRating === undefined) { %>
+              <h5>Previous Rating = 0</h5>
+          <%}else{%>
+            <h5>Previous Rating = <%= item.itemRating %></h5>
+          <%}%>
+
+          <form>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=0 onclick="radioButtonSelected(0)" checked>0/5
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=1 onclick="radioButtonSelected(1)">1/5
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=2 onclick="radioButtonSelected(2)">2/5
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=3 onclick="radioButtonSelected(3)">3/5
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=4 onclick="radioButtonSelected(4)">4/5
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="optradio" value=5 onclick="radioButtonSelected(5)">5/5
+            </label>
+          </form>
+					<a onclick="confirmFunction()" class="btn btn-primary btn-md margin5" role="button">
+						<span class="glyphicon glyphicon-star"></span>
+							Rate it
+					</a>
+				</div>
+			</section>
+	   </main>
+     <% include partials/footer.ejs %>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include partials/scripts.ejs %>
+    <title>My Posters - Poster Swap</title>
+  </head>
+  <body>
+    <% include partials/header.ejs %>
+    <% include partials/user-navigation.ejs %>
+    <% include partials/site-navigation.ejs %>
+    <% console.log("inside mySwaps view, items = " + items); %>
+    <% if(user !== undefined){%>
+      <% include partials/signOut.ejs %>
+    <% } %>
+    <main>
+  		<h6>
+        <a href="/index">Home</a> >
+				<a href="/mySwaps">My Swaps</a>
+      </h6>
+      <section>
+				<div>
+          <div class="container-fluid">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead class="bold">
+                      <tr>
+                        <td>
+                          Poster
+                        </td>
+                        <td>
+                          Swap Offer
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% for(var i = 0; i < items.length; i++){%>
+                        <% if(items[i].itemStatus !== 'available'){%>
+                            <tr>
+                              <td>
+                                <label>
+                                    <a href="/categories/item/<%= items[i]._id%>"><%= items[i].itemName %></a>
+                                </label>
+                              </td>
+                              <td>
+                                <label>
+                                    <a href="/categories/item/<%= items[i].itemSwapItem%>"><%= items[i].itemSwapItem%></a>
+                                </label>
+                              </td>
+                                <% if(items[i].itemStatus === 'pending'){%>
+                                <td>
+                                    <a href="/accept/<%= items[i]._id%>" class="btn btn-primary btn-md margin5">Accept</a>
+                                    <a href="/reject/<%= items[i]._id%>" class="btn btn-primary btn-md margin5">Reject</a>
+                                </td>
+                                <% } %>
+                                <% if(items[i].itemStatus === 'waiting'){%>
+                                <td>
+                                    <a href="/cancel/<%= items[i]._id%>" class="btn btn-primary btn-md margin5">Cancel</a>
+                                </td>
+                                <% } %>
+
+                                <% if(items[i].itemStatus === 'swapped'){%>
+                                    <td>
+                                        <a href="/withdraw/<%= items[i]._id%>" class="btn btn-primary btn-md margin5">Withdraw Swap</a>
+                                    </td>
+                                <% } %>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                  </tbody>
+                </table>
+            </div>
+          </div>
+				</div>
+			</section>
+
+     <% include partials/footer.ejs %>
+  </body>
+</html>
