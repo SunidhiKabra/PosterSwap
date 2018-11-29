@@ -213,3 +213,11 @@ main{
 	margin-right: 5px;
 	float: left;
 }
+
+.textColorRed{
+	color: red;
+}
+
+.textSize40{
+	font-size: 40px;
+}

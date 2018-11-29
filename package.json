@@ -9,9 +9,11 @@
   "author": "Sunidhi",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
     "http-errors": "^1.7.1",
     "mongoose": "^5.3.8",
     "mongoose-auto-increment": "^5.0.1",

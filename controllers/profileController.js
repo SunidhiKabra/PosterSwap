@@ -1,6 +1,16 @@
 var methodsHandler = require('../handler/methodsHandler');
+const { check, validationResult } = require('express-validator/check');
+
+var bodyParser = require('body-parser');
+const express = require('express');
+
 
 module.exports.profileController = function(app){
+app.use(bodyParser.json())
+app.use(express.json());
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 
   app.get('/', function(req, res){
     var isSignedIn1 = false;
@@ -36,16 +46,34 @@ module.exports.profileController = function(app){
     res.render('signIn', {data: data});
   });
 
-  app.post('/signIn', function(req, res){
-    return methodsHandler.userLogin(req, res);
+  app.post('/signIn', [
+    check('email').isEmail(),
+    check('password').isLength({ min: 5 })
+  ], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('errorPage', {errors: errors.array()});
+    }
+    else{
+        return methodsHandler.userLogin(req, res);
+    }
   });
 
   app.get('/signUp', function(req, res){
     res.render('signUp');
   });
 
-  app.post('/signUp', function(req, res){
-    return methodsHandler.userSignUp(req, res);
+  app.post('/signUp', [
+  check('userEmail').isEmail().isEmpty(),
+  check('userPassword').isLength({ min: 5 })
+  ], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      res.render('errorPage', {errors: errors.array()});
+    }
+    else{
+      return methodsHandler.userSignUp(req, res);
+    }
   });
 
   app.get('/signout', function(req, res){
@@ -72,13 +100,17 @@ module.exports.profileController = function(app){
     }
   });
 
-  app.post('/addPoster', function(req, res){
-    if(req.session.theUser === undefined){
-      res.redirect('/');
+  app.post('/addPoster', [
+    check('itemName').isLength({ min: 3 }),
+    check('itemCategory').isLength({ min: 3 })
+  ], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
     else{
-    return methodsHandler.itemAdd(req, res);
-  }
+        return methodsHandler.itemAdd(req, res);
+    }
   });
 
   app.get('/categories/item/:itemCode', function(req, res){
@@ -93,18 +125,19 @@ module.exports.profileController = function(app){
     return methodsHandler.updateItemUsingItemCode(req, res);
   });
 
-  app.post('/updateItem/:itemCode', function(req, res){
-    return methodsHandler.updateItemFormUsingItemCode(req, res);
+  app.post('/updateItem/:itemCode', [
+    check('itemName').isLength({ min: 3 }),
+    check('itemCategory').isLength({ min: 3 })
+  ], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    else{
+        return methodsHandler.updateItemFormUsingItemCode(req, res);
+    }
   });
 
-  // app.get('/updateItem/:itemCode', function(req, res){
-  //   if(req.session.theUser === undefined){
-  //     res.redirect('/');
-  //   }
-  //   else{
-  //   return methodsHandler.updateItemFormUsingItemCode(req, res);
-  // }
-  // });
 
   app.get('/swapIt/:itemCode', function(req, res){
     if(req.session.theUser === undefined){
@@ -114,12 +147,6 @@ module.exports.profileController = function(app){
       return methodsHandler.userItemsAvailableForSwap(req, res);
     }
   });
-
-  // app.get('/updateStatusAsPending', function(req, res){
-  //   return methodsHandler.updateStatusAsPending(req, res);
-  // });
-
-  // /offerItem?selectedItemCode='+itemCode+'&itemForSwapId=<%= itemForSwap._id %>
 
   app.get('/offerItem', function(req, res){
     if(req.session.theUser === undefined){

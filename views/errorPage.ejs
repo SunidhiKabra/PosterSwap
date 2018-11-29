@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include ./partials/scripts.ejs %>
+	<title>Error- Poster Swap</title>
+</head>
+<body>
+  <% console.log("errors inside view = " + JSON.stringify(errors)); %>
+	<% include ./partials/header.ejs %>
+	<% include ./partials/user-navigation.ejs %>
+	<div class="container-fluid">
+	<main>
+		<!-- <h6><a href="contact">Error</a></h6> -->
+    <div class="container">
+	     <div class="marginTop30 fontSize20">
+         <div class="textColorRed textBold textSize40">
+          Error!
+          </div>
+          <br>
+         <% for(var i = 0; i < errors.length; i++){ %>
+           <p class="textBold">
+             <%= errors[i].msg %>
+           </p>
+            of
+            <p class="textBold">
+              <%= errors[i].param %>
+            </p>
+           <br>
+         <% } %>
+
+	        </div>
+					<br>
+
+        </div>
+	</main>
+	<% include ./partials/site-navigation.ejs %>
+	<% include ./partials/footer.ejs %>
+</div>
+</body>
+</html>
