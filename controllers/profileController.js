@@ -47,8 +47,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
   });
 
   app.post('/signIn', [
-    check('email').isEmail(),
-    check('password').isLength({ min: 5 })
+    check('email').isEmail().trim().escape(),
+    check('password').isLength({ min: 5 }).trim()
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -64,8 +64,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
   });
 
   app.post('/signUp', [
-  check('userEmail').isEmail().isEmpty(),
-  check('userPassword').isLength({ min: 5 })
+  check('userEmail').isEmail().trim().escape(),
+  check('userPassword').isLength({ min: 5 }).trim()
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -101,8 +101,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
   });
 
   app.post('/addPoster', [
-    check('itemName').isLength({ min: 3 }),
-    check('itemCategory').isLength({ min: 3 })
+    check('itemName').isLength({ min: 3 }).trim().escape(),
+    check('itemCategory').isLength({ min: 3 }).trim().escape()
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -126,8 +126,8 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false });
   });
 
   app.post('/updateItem/:itemCode', [
-    check('itemName').isLength({ min: 3 }),
-    check('itemCategory').isLength({ min: 3 })
+    check('itemName').isLength({ min: 3 }).trim().escape(),
+    check('itemCategory').isLength({ min: 3 }).trim().escape()
   ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
