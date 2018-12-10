@@ -3,6 +3,7 @@ var Item = require('../models/ItemSchema');
 var mongoose = require('mongoose');
 var async = require('async');
 
+//new user creation
 exports.userSignUp= function(req, res){
   var newUser = new User({
       userFirstName: req.body.userFirstName,
@@ -26,6 +27,7 @@ exports.userSignUp= function(req, res){
     });
 };
 
+//user login
 exports.userLogin= function(req, res){
   User.findOne({
     userEmail: req.body.email,
@@ -41,6 +43,7 @@ exports.userLogin= function(req, res){
   });
 };
 
+//new poster addition
 exports.itemAdd= function(req, res){
   var newItem = new Item({
     itemName: req.body.itemName,
@@ -73,6 +76,7 @@ exports.itemAdd= function(req, res){
     });
 };
 
+//get all items in db
 exports.getAllItems= function(req, res){
   Item.find({}, {'__v' : 0}, function(err, items) {
       if (err)  console.log('There was an error! '+ err);
@@ -91,6 +95,7 @@ exports.getAllItems= function(req, res){
   });
 };
 
+//get all items in DB except items of the user himself
 exports.getAllItemsExceptUserItems= function(req, res){
   User.findOne({
     userEmail: req.session.theUser.userEmail,
@@ -143,7 +148,7 @@ exports.getAllItemsExceptUserItems= function(req, res){
   });
 };
 
-
+//get all the items of the user
 exports.getUserPosters = function(req, res){
   User.findOne({
     userEmail: req.session.theUser.userEmail,
@@ -178,6 +183,7 @@ exports.getUserPosters = function(req, res){
   });
 };
 
+//get an item using the item code
 exports.getItemUsingItemCode = function(req, res){
   var itemCode = req.params.itemCode;
   Item.findOne({_id: itemCode}, {'__v' : 0}).exec(function(err, result){
@@ -192,6 +198,7 @@ exports.getItemUsingItemCode = function(req, res){
   });
 };
 
+//delete an item using item code
 exports.deleteItemUsingItemCode = function(req, res){
   var itemCode = req.params.itemCode;
   Item.deleteOne({_id: itemCode}, function(err, result){
@@ -208,6 +215,7 @@ exports.deleteItemUsingItemCode = function(req, res){
   });
 };
 
+//look up an item using item code for updation
 exports.updateItemUsingItemCode = function(req, res){
   var itemCode = req.params.itemCode;
   Item.findOne({_id: itemCode}).exec(function(err, result){
@@ -219,6 +227,7 @@ exports.updateItemUsingItemCode = function(req, res){
   });
 };
 
+//update an item information using item code
 exports.updateItemFormUsingItemCode = function(req, res){
   var itemCode = req.params.itemCode;
   console.log("itemCode = " +itemCode);
@@ -237,6 +246,7 @@ exports.updateItemFormUsingItemCode = function(req, res){
   });
 };
 
+//swap an item uisng item code
 exports.swapItemOptions = function(req, res){
   var itemCode = req.params.itemCode;
   var user1 = null;
@@ -251,6 +261,7 @@ exports.swapItemOptions = function(req, res){
   });
 };
 
+//get all the items of user available for swap
 exports.userItemsAvailableForSwap = function(req, res){
   var itemCode = req.params.itemCode;
   User.find({
@@ -288,6 +299,7 @@ exports.userItemsAvailableForSwap = function(req, res){
   });
 };
 
+//get the item codes of items which are swapped in user's item
 exports.userMySwaps = function(req, res){
   User.find({
     userEmail: req.session.theUser.userEmail,
@@ -320,7 +332,7 @@ exports.userMySwaps = function(req, res){
   });
 };
 
-
+//update the status of an item as pending
 exports.updateStatusAsPending = function(req, res){
   var itemCode = req.query.selectedItemCode;
   var itemForSwapId = req.query.itemForSwapId;
@@ -348,6 +360,7 @@ exports.updateStatusAsPending = function(req, res){
   });
 };
 
+//update the status of an item as accepted
 exports.acceptOffer = function(req, res){
   var itemCode = req.params.itemCode;
   Item.findOneAndUpdate({
@@ -371,6 +384,7 @@ exports.acceptOffer = function(req, res){
   });
 };
 
+//rejecting an item offer
 exports.rejectOffer = function(req, res){
   var itemCode = req.params.itemCode;
   Item.findOneAndUpdate({
@@ -395,6 +409,7 @@ exports.rejectOffer = function(req, res){
   });
 };
 
+//get all items in DB without logging in
 exports.getItemUsingItemCodeWithoutLogin = function(req, res){
   var itemCode = req.params.itemCode;
   Item.findOne({_id: itemCode}, {'__v' : 0}).exec(function(err, result){
@@ -409,6 +424,7 @@ exports.getItemUsingItemCodeWithoutLogin = function(req, res){
   });
 };
 
+//rate an item
 exports.rateItem = function(req, res){
   var itemCode = req.query.itemCode;
   var rating = parseInt(req.query.rating);
